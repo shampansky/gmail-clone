@@ -33,7 +33,8 @@ export default {
   },
   computed: {
     sortedEmails () {
-      return this.emails.sort((e1, e2) => {
+      const emails = [...this.emails];
+      return emails.sort((e1, e2) => {
         return e1.sent < e2.sent ? 1 : -1
       });
     },

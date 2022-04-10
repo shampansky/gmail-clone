@@ -16,10 +16,24 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.0",
+    "@vue/cli-plugin-eslint": "^5.0.4",
     "@vue/cli-service": "^4.3.0",
     "@vue/compiler-sfc": "^3.0.0-beta.10",
+    "eslint": "^8.13.0",
+    "eslint-plugin-vue": "^8.6.0",
     "faker": "^4.1.0",
     "vue-cli-plugin-vue-next": "^0.1.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/essential"
+    ],
+    "rules": {}
+}
 }

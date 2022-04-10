@@ -1,15 +1,16 @@
 <template>
+<div>
   <h1>VMail Inbox</h1>
 
-  <Suspense>
-    <template #default>
-      <MailTable />
-    </template>
-    <template #fallback>
-      Loading...
-    </template>
-  </Suspense>
-
+    <Suspense>
+      <template #default>
+        <MailTable />
+      </template>
+      <template #fallback>
+        Loading...
+      </template>
+    </Suspense>
+</div>
 </template>
 
 <script>
