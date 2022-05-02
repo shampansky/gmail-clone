@@ -1,10 +1,11 @@
 <template>
+<div>
   <table class="mail-table">
     <tbody>
       <tr v-for="email in unarchivedEmails"
           :key="email.id"
           :class="['clickable', email.read ? 'read' : '']"
-          @click="readEmail(email)">
+          @click="openEmail(email)">
         <td><input type="checkbox"></td>
         <td>{{ email.from }}</td>
         <td>
@@ -14,12 +15,16 @@
         <td><button @click="archiveEmail(email)">Archive</button></td>
       </tr>
     </tbody>
-  </table>
+    </table>
+    <MailView v-if="openedEmail" :email="openedEmail" />
+</div>
+
 </template>
 
 <script>
 import { format } from 'date-fns';
 import axios from 'axios';
+import MailView from './MailView.vue'
 
 export default {
   name: 'MailTable',
@@ -29,8 +34,12 @@ export default {
 
     return {
       format,
-      emails
+      emails,
+      openedEmail: null,
     }
+  },
+  components: {
+    MailView,
   },
   computed: {
     sortedEmails () {
@@ -45,9 +54,10 @@ export default {
     }
   },
   methods: {
-    readEmail(email) {
-      email.read = !email.read;
+    openEmail(email) {
+      email.read = true;
       this.updateEmail(email);
+      this.openedEmail = email;
     },
     archiveEmail(email) {
       email.archived = true;
