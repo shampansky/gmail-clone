@@ -24,6 +24,7 @@ import axios from 'axios';
 export default {
   name: 'MailTable',
   async setup () {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const { data: emails } = await axios.get('http://localhost:3000/emails');
 
     return {
